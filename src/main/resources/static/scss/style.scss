@@ -3,7 +3,7 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -130,14 +130,6 @@ a {
         margin: 14px;
     }
 
-    &-add {
-        color: #ECF0F1;
-        @include rfs(26px);
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-    }
-
     &-news {
         color: #ECF0F1;
         font-weight: 700;
@@ -152,14 +144,20 @@ a {
         border-radius: 10px 10px 0 0;
     }
 
-    &-notification {
-        color: #ECF0F1;
-        @include rfs(24px);
+    &-icons {
         width: 100%;
         text-align: center;
-        cursor: pointer;
-    }
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        i {
+            cursor: pointer;
+            color: #ECF0F1;
+            @include rfs(24px);
+        }
+    }
 
     &-avatar {
         margin: 14px;
@@ -229,6 +227,9 @@ a {
 
 .board {
     padding: 70px 48px 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
     &-passwords {
         display: grid;
@@ -239,7 +240,8 @@ a {
 }
 
 .pass-card {
-    width: 100%;
+    width: 550px;
+    max-width: 95%;
     height: 70px;
     background-color: #E3E3E3;
     border-radius: 18px;
@@ -257,8 +259,6 @@ a {
         }
 
         &-address {
-            margin-top: -4px;
-
             a {
                 color: #333;
                 font-weight: 300;
@@ -271,16 +271,15 @@ a {
         display: flex;
         align-items: center;
 
-        &-edit {
-
+        &-details {
+            cursor: pointer;
         }
 
-        &-delete {
-            margin-left: 10px;
-        }
-
+        &-edit,
+        &-delete,
         &-fav {
             margin-left: 10px;
+            cursor: pointer;
         }
     }
 }
@@ -299,6 +298,7 @@ a {
     justify-content: space-between;
     transition: transform 300ms;
     transform: translate(-50%, -50%) scale(0);
+    z-index: 999;
 
     &.active {
         transform: translate(-50%, -50%) scale(1);
@@ -394,4 +394,35 @@ a {
             color: #00f;
         }
     }
+}
+
+.grid {
+    position: relative;
+    width: 100%;
+}
+
+.item {
+    display: block;
+    position: absolute;
+    height: 70px;
+    margin: 15px;
+    z-index: 1;
+}
+
+.item.muuri-item-dragging {
+    z-index: 3;
+}
+
+.item.muuri-item-releasing {
+    z-index: 2;
+}
+
+.item.muuri-item-hidden {
+    z-index: 0;
+}
+
+.item-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }

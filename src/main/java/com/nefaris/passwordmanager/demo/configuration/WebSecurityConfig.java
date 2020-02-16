@@ -14,7 +14,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        // todo add password hasing
+        // todo add password encoding (noop encoder for tests)
         // return new BCryptPasswordEncoder();
         return NoOpPasswordEncoder.getInstance();
     }
@@ -24,7 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser(User.builder()
                 .username("admin")
                 .password(getPasswordEncoder().encode("admin"))
-                .roles("ADMIN")
+                .roles("ADMIN", "USER")
+        );
+
+        auth.inMemoryAuthentication().withUser(User.builder()
+                .username("user")
+                .password(getPasswordEncoder().encode("user"))
+                .roles("USER")
         );
     }
 
@@ -34,8 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+
                 .antMatchers("/dashboard").authenticated()
+                .antMatchers("/dashboard").hasRole("USER")
+
                 .antMatchers("/swagger-ui.html").authenticated()
+                .antMatchers("/swagger-ui.html").hasRole("ADMIN")
+
                 .and()
                 .formLogin().loginPage("/login").failureUrl("/loginError").defaultSuccessUrl("/dashboard")
                 .and()
