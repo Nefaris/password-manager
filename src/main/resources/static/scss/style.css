@@ -134,6 +134,46 @@ body {
   text-decoration: none;
   font-weight: 300;
   line-height: 1.6;
+  color: #00f;
+}
+
+.error-wrapper {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #333;
+}
+
+.error-wrapper .http-error {
+  text-align: center;
+}
+
+.error-wrapper .http-error-code {
+  font-size: 3.25rem;
+  font-weight: 300;
+  color: #333;
+}
+
+@media (max-width: 1200px) {
+  .error-wrapper .http-error-code {
+    font-size: calc(1.45rem + 2.4vw) ;
+  }
+}
+
+.error-wrapper .http-error-message {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+}
+
+.error-wrapper .http-error-href {
+  text-decoration: none;
+  color: #00f;
 }
 /*# sourceMappingURL=style.css.map */

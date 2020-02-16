@@ -95,13 +95,50 @@ body {
                 text-decoration: none;
                 font-weight: 300;
                 line-height: 1.6;
-                color: #333;
+                color: #00f;
             }
         }
     }
 }
 
 
+
+
+
+
+
+
+
+
+
+
+.error-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+
+    .http-error {
+        text-align: center;
+
+        &-code {
+            @include rfs(52px);
+            font-weight: 300;
+            color: #333;
+        }
+
+        &-message {
+            @include rfs(18px);
+            margin-bottom: 20px;
+        }
+
+        &-href {
+            text-decoration: none;
+            color: #00f;
+        }
+    }
+}
 
 
 
