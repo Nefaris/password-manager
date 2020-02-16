@@ -254,6 +254,9 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .topbar-title {
@@ -285,16 +288,23 @@ a {
   background-position: 12px 50%;
 }
 
-.topbar-logoff {
+.topbar-logoff-form {
+  margin: 0;
+}
+
+.topbar-logoff-form-button {
+  border: none;
+  background: none;
+  outline: none;
   cursor: pointer;
 }
 
-.topbar-logoff i {
+.topbar-logoff-form-button i {
   font-size: 1.75rem;
 }
 
 @media (max-width: 1200px) {
-  .topbar-logoff i {
+  .topbar-logoff-form-button i {
     font-size: calc(1.3rem + 0.6vw) ;
   }
 }

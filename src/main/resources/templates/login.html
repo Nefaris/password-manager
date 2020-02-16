@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+
+<body>
+
+    <div class="hero">
+        <div class="hero-fancy-bar"></div>
+        <div class="hero-card animated fadeInLeft">
+            <div class="hero-card-title">Login to your account</div>
+            <form class="hero-card-form" th:action="@{/login}" method="post">
+                <input type="text" name="username" placeholder="Username" class="hero-card-form-input" autofocus>
+                <input type="password" name="password" placeholder="Password" class="hero-card-form-input">
+                <input type="submit" value="Login" class="hero-card-form-input hero-card-form-input--submit">
+            </form>
+            <div class="hero-card-hrefs">
+                <a th:href="@{/register}">Create new account</a>
+                <a th:href="@{/remember}">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

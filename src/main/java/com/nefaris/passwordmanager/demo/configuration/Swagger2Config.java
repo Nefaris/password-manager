@@ -26,11 +26,11 @@ public class Swagger2Config {
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Spring Boot REST API")
-                .description("Chat application REST API")
+                .description("Password manager webapp")
                 .contact(new Contact("Kamil", "https://github.com/Nefaris", ""))
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("1.1.0")
+                .version("0.0.1")
                 .build();
     }
 }

@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="scss/style.css">
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
 
 <body>
 
@@ -43,7 +34,9 @@
                 <input class="topbar-searchbar-input" type="text" placeholder="Type to search ...">
             </div>
             <div class="topbar-logoff">
-                <i class="fa fa-power-off"></i>
+                <form class="topbar-logoff-form" th:action="@{/logout}" method="post">
+                    <button class="topbar-logoff-form-button"><i class="fa fa-power-off"></i></button>
+                </form>
             </div>
         </div>
         <div class="board">

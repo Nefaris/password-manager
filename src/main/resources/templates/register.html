@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html"></head>
+
+<body>
+
+    <div class="hero">
+        <div class="hero-fancy-bar"></div>
+        <div class="hero-card animated fadeInLeft">
+            <div class="hero-card-title">Create new account</div>
+            <form action="" class="hero-card-form">
+                <input type="text" placeholder="Username" class="hero-card-form-input" autofocus>
+                <input type="password" placeholder="Password" class="hero-card-form-input">
+                <input type="email" placeholder="Email" class="hero-card-form-input">
+                <input type="submit" value="Register" class="hero-card-form-input hero-card-form-input--submit">
+            </form>
+            <div class="hero-card-hrefs">
+                <a th:href="@{/login}">Already have account?</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
