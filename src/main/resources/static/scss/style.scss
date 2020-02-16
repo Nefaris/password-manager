@@ -32,6 +32,11 @@ body {
         transform: translateY(-50%);
         left: 0;
         top: 50%;
+        display: none;
+
+        @media (min-width: 440px) {
+            display: block;
+        }
     }
 
     &-card {
