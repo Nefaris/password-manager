@@ -1,0 +1,119 @@
+@import "./_rfs.scss";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero {
+    background-image: url('../img/sliced-rect.svg');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3E3E3;
+
+    &-fancy-bar {
+        background-color: #FA314C;
+        width: 10px;
+        min-height: 360px;
+        width: 10px;
+        position: absolute;
+        transform: translateY(-50%);
+        left: 0;
+        top: 50%;
+    }
+
+    &-card {
+        background-color: #fff;
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+        @include rfs(24px);
+        font-weight: 700;
+        padding: 36px 72px;
+        max-width: 95%;
+        width: 676px;
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-title {
+            text-align: center;
+        }
+
+        &-form {
+            display: flex;
+            flex-direction: column;
+
+            &-input {
+                background: #E3E3E3;
+                border-radius: 15px;
+                border: none;
+                outline: none;
+                @include rfs(14px);
+                font-weight: 300;
+                color: #333;
+                padding: 12px 20px;
+                text-align: center;
+
+                &:not(:last-child) {
+                    margin-bottom: 14px;
+                }
+
+                &--submit {
+                    color: #fff;
+                    background-color: #00CA72;
+                    font-weight: 700;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &-hrefs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                @include rfs(14px);
+                text-decoration: none;
+                font-weight: 300;
+                line-height: 1.6;
+                color: #333;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
