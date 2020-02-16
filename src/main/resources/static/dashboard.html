@@ -6,27 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="scss/style.css">
 </head>
 
 <body>
 
-    <div class="hero">
-        <div class="hero-fancy-bar"></div>
-        <div class="hero-card">
-            <div class="hero-card-title">Login to your account</div>
-            <form action="" class="hero-card-form">
-                <input type="text" placeholder="Username" class="hero-card-form-input">
-                <input type="password" placeholder="Password" class="hero-card-form-input">
-                <input type="submit" value="Login" class="hero-card-form-input hero-card-form-input--submit">
-            </form>
-            <div class="hero-card-hrefs">
-                <a href="register.html">Create new account</a>
-                <a href="#">Forgot password?</a>
+    <div class="sidebar">
+        <div class="sidebar-brand">B</div>
+
+        <div class="sidebar-add">
+            <i class="fa fa-plus"></i>
+        </div>
+
+        <a href="#">
+            <div class="sidebar-news">
+                What's new?
+            </div>
+        </a>
+
+        <div class="sidebar-notification">
+            <i class="fa fa-bell"></i>
+        </div>
+
+        <div class="sidebar-avatar">
+            <img class="sidebar-avatar-image" src="img/avatar.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="topbar">
+            <div class="topbar-title">
+                Password manager
+            </div>
+            <div class="topbar-searchbar">
+                <input class="topbar-searchbar-input" type="text" placeholder="Type to search ...">
+            </div>
+            <div class="topbar-logoff">
+                <i class="fa fa-power-off"></i>
+            </div>
+        </div>
+        <div class="board">
+            <div class="board-passwords">
+                <div class="pass-card">
+                    <div class="pass-card-domain">
+                        <div class="pass-card-domain-icon">
+                            <img src="img/globe.svg" alt="">
+                        </div>
+                        <div class="pass-card-domain-address">
+                            <a href="#">exampledomain1.com</a>
+                        </div>
+                    </div>
+                    <div class="pass-card-details">
+                        <img src="img/fingerprint.svg" alt="">
+                    </div>
+                    <div class="pass-card-buttons">
+                        <div class="pass-card-buttons-edit">
+                            <img src="img/edit.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-delete">
+                            <img src="img/erase.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-fav">
+                            <img src="img/star.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="pass-card">
+                    <div class="pass-card-domain">
+                        <div class="pass-card-domain-icon">
+                            <img src="img/globe.svg" alt="">
+                        </div>
+                        <div class="pass-card-domain-address">
+                            <a href="#">exampledomain2.com</a>
+                        </div>
+                    </div>
+                    <div class="pass-card-details">
+                        <img src="img/fingerprint.svg" alt="">
+                    </div>
+                    <div class="pass-card-buttons">
+                        <div class="pass-card-buttons-edit">
+                            <img src="img/edit.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-delete">
+                            <img src="img/erase.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-fav">
+                            <img src="img/star.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="pass-card">
+                    <div class="pass-card-domain">
+                        <div class="pass-card-domain-icon">
+                            <img src="img/globe.svg" alt="">
+                        </div>
+                        <div class="pass-card-domain-address">
+                            <a href="#">exampledomain3.com</a>
+                        </div>
+                    </div>
+                    <div class="pass-card-details">
+                        <img src="img/fingerprint.svg" alt="">
+                    </div>
+                    <div class="pass-card-buttons">
+                        <div class="pass-card-buttons-edit">
+                            <img src="img/edit.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-delete">
+                            <img src="img/erase.svg" alt="">
+                        </div>
+                        <div class="pass-card-buttons-fav">
+                            <img src="img/star.svg" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="add-domain-popup">
+        <div class="add-domain-popup-title">Add new domain</div>
+        <form action="" class="add-domain-popup-form">
+            <input type="text" placeholder="Domain" class="add-domain-popup-form-input">
+            <input type="text" placeholder="Username" class="add-domain-popup-form-input">
+            <input type="password" placeholder="Password" class="add-domain-popup-form-input">
+            <div class="add-domain-popup-form-controls">
+                <input type="submit" value="Add"
+                    class="add-domain-popup-form-controls-input add-domain-popup-form-controls-input--submit">
+                <input type="submit" value="Cancel"
+                    class="add-domain-popup-form-controls-input add-domain-popup-form-controls-input--cancel">
+            </div>
+        </form>
+    </div>
+
+    <script src="js/dashboard.js"></script>
 </body>
 
 </html>
