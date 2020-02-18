@@ -1,9 +1,12 @@
 package com.nefaris.passwordmanager.demo.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Objects;
 
+@Document(collection = "users")
 public class User {
 
     @Id
@@ -65,5 +68,22 @@ public class User {
                 ", password='" + password + '\'' +
                 ", domains=" + domains +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(domains, user.domains);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, password, domains);
     }
 }

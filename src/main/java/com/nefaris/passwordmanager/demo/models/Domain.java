@@ -2,6 +2,8 @@ package com.nefaris.passwordmanager.demo.models;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Objects;
+
 public class Domain {
 
     @Id
@@ -11,6 +13,12 @@ public class Domain {
     String password;
 
     public Domain() {
+    }
+
+    public Domain(String domainAddress, String username, String password) {
+        this.domainAddress = domainAddress;
+        this.username = username;
+        this.password = password;
     }
 
     public String getId() {
@@ -53,5 +61,21 @@ public class Domain {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Domain)) return false;
+        Domain domain = (Domain) o;
+        return Objects.equals(id, domain.id) &&
+                Objects.equals(domainAddress, domain.domainAddress) &&
+                Objects.equals(username, domain.username) &&
+                Objects.equals(password, domain.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, domainAddress, username, password);
     }
 }
