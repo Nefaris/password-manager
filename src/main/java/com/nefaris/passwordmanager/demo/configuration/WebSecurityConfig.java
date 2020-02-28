@@ -1,37 +1,30 @@
 package com.nefaris.passwordmanager.demo.configuration;
 
+import com.nefaris.passwordmanager.demo.services.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        // todo add password encoding (noop encoder for tests)
-        // return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+    private final CustomUserDetailsService myUserDetailsService;
+
+    @Autowired
+    public WebSecurityConfig(CustomUserDetailsService customUserDetailsService) {
+        this.myUserDetailsService = customUserDetailsService;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser(User.builder()
-                .username("admin")
-                .password(getPasswordEncoder().encode("admin"))
-                .roles("ADMIN", "USER")
-        );
-
-        auth.inMemoryAuthentication().withUser(User.builder()
-                .username("user")
-                .password(getPasswordEncoder().encode("user"))
-                .roles("USER")
-        );
+    @Bean
+    protected PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override
@@ -48,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-ui.html").hasRole("ADMIN")
 
                 .and()
-                .formLogin().loginPage("/login").failureUrl("/loginError").defaultSuccessUrl("/dashboard")
+                .formLogin().loginPage("/login").failureUrl("/login").defaultSuccessUrl("/dashboard")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
