@@ -3,6 +3,9 @@ package com.nefaris.passwordmanager.demo.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document(collection = "users")
 public class User {
 
@@ -13,17 +16,18 @@ public class User {
     private boolean active;
     private String roles;
     private String email;
-
-    // todo create user builder
-    public User(String username, String password, boolean active, String roles, String email) {
-        this.username = username;
-        this.password = password;
-        this.active = active;
-        this.roles = roles;
-        this.email = email;
-    }
+    private List<Domain> domains;
 
     public User() {
+    }
+
+    public User(RegisterFormData registerFormData) {
+        this.username = registerFormData.getUsername();
+        this.password = registerFormData.getPassword();
+        this.active = true;
+        this.roles = "USER";
+        this.email = registerFormData.getEmail();
+        this.domains = new ArrayList<>();
     }
 
     public String getId() {
@@ -66,13 +70,20 @@ public class User {
         this.roles = roles;
     }
 
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Domain> getDomains() {
+        return domains;
+    }
+
+    public void setDomains(List<Domain> domains) {
+        this.domains = domains;
     }
 
     @Override
@@ -84,6 +95,7 @@ public class User {
                 ", active=" + active +
                 ", roles='" + roles + '\'' +
                 ", email='" + email + '\'' +
+                ", domains=" + domains +
                 '}';
     }
 }
