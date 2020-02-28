@@ -1,237 +1,104 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html"></head>
-
 <body>
 
-<div class="sidebar">
-    <div class="sidebar-brand">B</div>
-
-    <div class="sidebar-icons">
-        <i class="fa fa-plus sidebar-add"></i>
-    </div>
-
-    <!-- todo change this to vertical text-->
-    <div class="sidebar-news">
-        What's new?
-    </div>
-
-    <div class="sidebar-icons">
-        <i class="fa fa-bell"></i>
-    </div>
-
-    <div class="sidebar-avatar">
-        <img class="sidebar-avatar-image" src="img/avatar.jpg" alt="">
-    </div>
-</div>
-
-<div class="content">
-    <div class="topbar">
-        <div class="topbar-title">
-            Password manager
+<div class="container-fluid bg-light py-3 mb-5">
+    <div class="row">
+        <div class="col-md-4 d-flex justify-content-center justify-content-md-start mb-2 mb-md-0">
+            <span class="navbar-brand m-0">Welcome!</span>
         </div>
-        <div class="topbar-searchbar">
-            <input class="topbar-searchbar-input" type="text" placeholder="Type to search ...">
+        <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+            <form class="form-inline m-0">
+                <input id="search" class="form-control" type="search" placeholder="Search">
+            </form>
         </div>
-        <div class="topbar-logoff">
-            <form class="topbar-logoff-form" th:action="@{/logout}" method="post">
-                <button class="topbar-logoff-form-button"><i class="fa fa-power-off"></i></button>
+        <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
+            <form class="m-0" th:action="@{/logout}" method="post">
+                <input class="btn btn-dark" type="submit" value="Logout">
             </form>
         </div>
     </div>
-    <div class="board">
-        <div class="grid">
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://www.facebook.com/</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+</div>
 
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://messenger.com/.com</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://www.youtube.com/</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://github.com/</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://trello.com/</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-content">
-                    <div class="pass-card">
-                        <div class="pass-card-domain">
-                            <div class="pass-card-domain-icon">
-                                <img src="img/globe.svg" alt="">
-                            </div>
-                            <div class="pass-card-domain-address">
-                                <a class="pass-card-domain-address-href" href="#">https://bitbucket.org/</a>
-                            </div>
-                        </div>
-                        <div class="pass-card-buttons">
-                            <div class="pass-card-buttons">
-                                <img src="img/fingerprint.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-edit">
-                                <img src="img/edit.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-delete">
-                                <img src="img/erase.svg" alt="">
-                            </div>
-                            <div class="pass-card-buttons-fav">
-                                <img src="img/star.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>There is saved passwords.</p>
         </div>
     </div>
 </div>
 
-<div class="add-domain-popup">
-    <div class="add-domain-popup-title">Add new domain</div>
-    <form action="" class="add-domain-popup-form">
-        <input type="text" placeholder="Domain" class="add-domain-popup-form-input">
-        <input type="text" placeholder="Username" class="add-domain-popup-form-input">
-        <input type="password" placeholder="Password" class="add-domain-popup-form-input">
-        <div class="add-domain-popup-form-controls">
-            <input type="submit" value="Add"
-                   class="add-domain-popup-form-controls-input add-domain-popup-form-controls-input--submit">
-            <input type="submit" value="Cancel"
-                   class="add-domain-popup-form-controls-input add-domain-popup-form-controls-input--cancel">
+<div class="container">
+    <div class="row">
+        <div  class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="card-username form-control" disabled>
+                        <div class="input-group-append">
+                            <button class=" card-button-copy-username btn btn-outline-secondary" type="button">
+                                <i class="fa fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="card-password form-control" disabled>
+                        <div class="input-group-append">
+                            <button class="card-button-show-password btn btn-outline-secondary" type="button">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                            <button class=" card-button-copy-password btn btn-outline-secondary" type="button">
+                                <i class="fa fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
-<script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
-<script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
-<script src="js/dashboard.js"></script>
-</body>
+<script>
+    const search = document.querySelector('#search');
+    const cards = document.querySelectorAll('[data-search]');
 
+    search.addEventListener('input', () => {
+        cards.forEach((card) => {
+            card.dataset.search.includes(search.value) ? card.classList.remove('d-none') : card.classList.add('d-none');
+        });
+    });
+
+    cards.forEach((card) => {
+        let copyPassButton = card.querySelector('.card-button-copy-password');
+        let showPassButton = card.querySelector('.card-button-show-password');
+        let passwordInput = showPassButton.parentElement.parentElement.querySelector('.card-password');
+
+        let copyUsernameButton = card.querySelector('.card-button-copy-username');
+        let usernameInput = copyUsernameButton.parentElement.parentElement.querySelector('.card-username');
+
+        showPassButton.addEventListener('mousedown', () => {
+            passwordInput.getAttribute('type') === 'password' ? passwordInput.setAttribute('type', 'text') : passwordInput.setAttribute('type', 'password');
+        });
+
+        showPassButton.addEventListener('mouseup', () => {
+            passwordInput.getAttribute('type') === 'password' ? passwordInput.setAttribute('type', 'text') : passwordInput.setAttribute('type', 'password');
+        });
+
+        showPassButton.addEventListener('mouseout', () => {
+            passwordInput.setAttribute('type', 'password');
+        });
+
+        copyUsernameButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(usernameInput.value);
+        });
+
+        copyPassButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(passwordInput.value);
+        });
+    });
+</script>
+
+<div th:replace="fragments/footer-scripts.html"></div>
+</body>
 </html>

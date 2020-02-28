@@ -1,24 +1,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html"></head>
-
 <body>
 
-    <div class="hero">
-        <div class="hero-fancy-bar"></div>
-        <div class="hero-card animated fadeInLeft">
-            <div class="hero-card-title">Create new account</div>
-            <form action="" class="hero-card-form">
-                <input type="text" placeholder="Username" class="hero-card-form-input" autofocus>
-                <input type="password" placeholder="Password" class="hero-card-form-input">
-                <input type="email" placeholder="Email" class="hero-card-form-input">
-                <input type="submit" value="Register" class="hero-card-form-input hero-card-form-input--submit">
-            </form>
-            <div class="hero-card-hrefs">
-                <a th:href="@{/login}">Already have account?</a>
+<div class="login-wrapper d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Register</h5>
+                            <form th:action="@{/register}" method="post">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Username" autofocus="autofocus">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="submit" class="btn btn-block btn-dark" value="Create account">
+                                </div>
+                            </form>
+                            <div class="text-center">
+                                <a href="/login">Let me sign in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
+<div th:replace="fragments/footer-scripts.html"></div>
 </body>
-
 </html>
