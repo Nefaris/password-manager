@@ -1,5 +1,6 @@
 package com.nefaris.passwordmanager.demo.controllers;
 
+import com.nefaris.passwordmanager.demo.models.Domain;
 import com.nefaris.passwordmanager.demo.models.User;
 import com.nefaris.passwordmanager.demo.repositories.UserRepository;
 import com.nefaris.passwordmanager.demo.services.UserService;
@@ -90,7 +91,22 @@ public class UserController {
 
         userRepository.findUserByUsername(username).ifPresent(user -> model.addAttribute("domains", user.getDomains()));
 
+        Domain domain = new Domain();
+        model.addAttribute("domain", domain);
+
         return "dashboard";
+    }
+
+    @PostMapping("/addDomain")
+    public String addDomain(Authentication authentication, @ModelAttribute Domain domain) {
+        User user = userRepository.findUserByUsername(authentication.getName()).orElse(null);
+
+        if (user != null) {
+            user.getDomains().add(domain);
+            userRepository.save(user);
+        }
+
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/remember")
