@@ -33,6 +33,7 @@
 
 <div th:if="${domains.size() > 0}" class="container">
     <div class="row">
+        <div class="col-12 text-center no-cards-info d-none">There is no cards including search word</div>
         <div th:each="domain : ${domains}" data-th-data-search="${domain.getDomainAddress()}" class="col-lg-4 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -101,11 +102,26 @@
 <script>
     const search = document.querySelector('#search');
     const cards = document.querySelectorAll('[data-search]');
+    const noCardsInfo = document.querySelector('.no-cards-info');
+
+    search.focus();
 
     search.addEventListener('input', () => {
+        const foundCards = [];
+        noCardsInfo.classList.add('d-none');
+
         cards.forEach((card) => {
-            card.dataset.search.includes(search.value) ? card.classList.remove('d-none') : card.classList.add('d-none');
+            if (card.dataset.search.includes(search.value)) foundCards.push(card);
+            card.classList.add('d-none');
         });
+
+        if (foundCards.length === 0) {
+            noCardsInfo.classList.remove('d-none');
+        } else {
+            foundCards.forEach((card) => {
+                card.classList.remove('d-none');
+            });
+        }
     });
 
     cards.forEach((card) => {
@@ -143,9 +159,11 @@
     const formPopup = document.querySelector('.form-popup');
     const addForm = document.querySelector('.add-form');
     const cancelFormButton = document.querySelector('.add-form-cancel');
+    const firstFormInput = addForm.querySelector('input[type="text"]')
 
     addButton.addEventListener('click', () => {
         formPopup.classList.toggle('active');
+        firstFormInput.focus();
     });
 
     cancelFormButton.addEventListener('click', (e) => {
