@@ -8,4 +8,19 @@
   min-height: 95vh;
 }
 
+.form-popup {
+  position: fixed;
+  transform: translate(-50%, -50%) scale(0);
+  left: 50%;
+  top: 45%;
+  transition: transform 500ms;
+  will-change: transform;
+}
+.form-popup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+.form-popup .card {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
 /*# sourceMappingURL=style.css.map */

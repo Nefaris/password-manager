@@ -7,3 +7,20 @@
 .login-wrapper {
     min-height: 95vh;
 }
+
+.form-popup {
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    left: 50%;
+    top: 45%;
+    transition: transform 500ms;
+    will-change: transform;
+
+    &.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .card {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+}
