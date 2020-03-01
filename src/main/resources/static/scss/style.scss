@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+.top-bar {
+    border-bottom: solid 1px #d0d0d0;
+    background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+}
+
+.domain-card {
+    box-shadow: 0 0 15px rgb(48, 199, 236, .4);
+}
+
 .login-wrapper {
     height: 100vh;
     background-image: linear-gradient(to left, #fa709a 0%, #fee140 100%);
@@ -28,6 +37,15 @@
 
     .card {
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.remove-form {
+    button[type="submit"] {
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
     }
 }
 

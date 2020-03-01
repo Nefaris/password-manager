@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-center">
-                    <div class="card login-card px-5">
+                    <div class="card login-card px-md-5">
                         <div class="card-body">
                             <h5 class="card-title text-center">Register</h5>
                             <form th:action="@{/register}" th:object="${registerFormData}" method="post">
@@ -44,44 +44,48 @@
     </div>
 </div>
 
-<img src="img/undraw-sign-in.svg" class="register-undraw-sign" alt="register">
+<img src="img/undraw-sign-in.svg" class="register-undraw-sign d-none d-lg-block" alt="register">
 
 <div th:replace="fragments/footer-scripts.html"></div>
 
 <script>
-    const tl = gsap.timeline();
+    (function () {
+        if (window.innerWidth < 992) return;
 
-    tl
-        .to('.login-wrapper',
-            {
-                borderWidth: '30px',
-                duration: 1,
-                ease: 'Power1.easeInOut',
-                delay: .25,
-            }
-        )
-        .fromTo('.register-undraw-sign',
-            {
-                transform: 'translateY(100%)',
-            },
-            {
-                transform: 'translateY(0)',
-                duration: 1,
-                ease: 'Power1.easeInOut',
-            },
-            "-=1",
-        )
-        .fromTo('.login-card',
-            {
-                opacity: 0,
-            },
-            {
-                opacity: 1,
-                duration: 1,
-                ease: 'Power1.easeInOut',
-            },
-            "-=.5",
-        );
+        const tl = gsap.timeline();
+
+        tl
+            .to('.login-wrapper',
+                {
+                    borderWidth: '30px',
+                    duration: 1,
+                    ease: 'Power1.easeInOut',
+                    delay: .25,
+                }
+            )
+            .fromTo('.register-undraw-sign',
+                {
+                    transform: 'translateY(100%)',
+                },
+                {
+                    transform: 'translateY(0)',
+                    duration: 1,
+                    ease: 'Power1.easeInOut',
+                },
+                "-=1",
+            )
+            .fromTo('.login-card',
+                {
+                    opacity: 0,
+                },
+                {
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'Power1.easeInOut',
+                },
+                "-=.5",
+            );
+    })();
 </script>
 
 </body>

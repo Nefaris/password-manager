@@ -1,7 +1,5 @@
 package com.nefaris.passwordmanager.demo.configuration;
 
-import com.nefaris.passwordmanager.demo.services.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,13 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    private final CustomUserDetailsService customUserDetailsService;
-
-    @Autowired
-    public WebSecurityConfig(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
-    }
 
     @Bean
     protected PasswordEncoder getPasswordEncoder() {
@@ -41,8 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login").failureUrl("/login").defaultSuccessUrl("/dashboard")
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/logout").permitAll()
                 .logoutSuccessUrl("/login");
     }
-
 }
