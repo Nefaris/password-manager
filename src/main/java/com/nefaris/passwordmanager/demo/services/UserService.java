@@ -1,10 +1,17 @@
 package com.nefaris.passwordmanager.demo.services;
 
+import com.nefaris.passwordmanager.demo.models.Domain;
+import com.nefaris.passwordmanager.demo.models.RegisterFormData;
 import com.nefaris.passwordmanager.demo.models.User;
 import com.nefaris.passwordmanager.demo.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -12,25 +19,48 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     public boolean userExistsByUsername(String username) {
-        User user = userRepository.findUserByUsername(username).orElse(null);
-        return user != null;
+        return userRepository.findUserByUsername(username).isPresent();
     }
 
-    public boolean addNewUser(User user) {
-        if (userExistsByUsername(user.getUsername())) {
-            return false;
-        }
+    public boolean userExistsByEmail(String email) {
+        return userRepository.findUserByEmail(email).isPresent();
+    }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public boolean registerUser(RegisterFormData registerFormData) {
+        boolean usernameExists = userRepository.findUserByUsername(registerFormData.getUsername()).isPresent();
+        if (usernameExists) return false;
 
+        boolean emailExists = userRepository.findUserByEmail(registerFormData.getEmail()).isPresent();
+        if (emailExists) return false;
+
+        User user = new User(registerFormData);
+        user.setPassword(passwordEncoder.encode(registerFormData.getPassword()));
         userRepository.save(user);
         return true;
+    }
+
+    public boolean isUserAuthenticated() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return !(auth instanceof AnonymousAuthenticationToken);
+    }
+
+    public void addDomain(String username, Domain domain) {
+        User user = userRepository.findUserByUsername(username).orElse(null);
+
+        if (user != null) {
+            user.getDomains().add(domain);
+            userRepository.save(user);
+        }
+    }
+
+    public List<Domain> getDomains(String username) {
+        User user = userRepository.findUserByUsername(username).orElse(null);
+        return user != null ? user.getDomains() : new ArrayList<>();
     }
 }

@@ -104,22 +104,24 @@
     const cards = document.querySelectorAll('[data-search]');
     const noCardsInfo = document.querySelector('.no-cards-info');
 
+    const hideClass = 'd-none';
+
     search.focus();
 
     search.addEventListener('input', () => {
         const foundCards = [];
-        noCardsInfo.classList.add('d-none');
+        noCardsInfo.classList.add(hideClass);
 
         cards.forEach((card) => {
             if (card.dataset.search.includes(search.value)) foundCards.push(card);
-            card.classList.add('d-none');
+            card.classList.add(hideClass);
         });
 
         if (foundCards.length === 0) {
-            noCardsInfo.classList.remove('d-none');
+            noCardsInfo.classList.remove(hideClass);
         } else {
             foundCards.forEach((card) => {
-                card.classList.remove('d-none');
+                card.classList.remove(hideClass);
             });
         }
     });
@@ -159,7 +161,7 @@
     const formPopup = document.querySelector('.form-popup');
     const addForm = document.querySelector('.add-form');
     const cancelFormButton = document.querySelector('.add-form-cancel');
-    const firstFormInput = addForm.querySelector('input[type="text"]')
+    const firstFormInput = addForm.querySelector('input[type="text"]');
 
     addButton.addEventListener('click', () => {
         formPopup.classList.toggle('active');
