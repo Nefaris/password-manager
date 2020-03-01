@@ -37,7 +37,17 @@
         <div th:each="domain : ${domains}" data-th-data-search="${domain.getDomainAddress()}" class="col-lg-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 th:text="${domain.getDomainAddress()}" class="card-title"></h5>
+                    <div class="d-flex justify-content-between">
+                        <h5 th:text="${domain.getDomainAddress()}" class="card-title"></h5>
+                        <div class="d-flex justify-content-between">
+                            <i class="fa fa-edit mr-2"></i>
+                            <form th:action="@{/removeDomain}" method="post">
+                                <input type="text" name="domain" th:value="${domain.getDomainAddress()}" hidden>
+                                <input type="text" name="domainUsername" th:value="${domain.getUsername()}" hidden>
+                                <button type="submit"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="input-group mb-3">
                         <input th:value="${domain.getUsername()}" type="text" class="card-username form-control" disabled>
                         <div class="input-group-append">

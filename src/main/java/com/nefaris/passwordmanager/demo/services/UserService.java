@@ -50,17 +50,24 @@ public class UserService {
         return !(auth instanceof AnonymousAuthenticationToken);
     }
 
-    public void addDomain(String username, Domain domain) {
-        User user = userRepository.findUserByUsername(username).orElse(null);
-
-        if (user != null) {
-            user.getDomains().add(domain);
-            userRepository.save(user);
-        }
-    }
-
     public List<Domain> getDomains(String username) {
         User user = userRepository.findUserByUsername(username).orElse(null);
         return user != null ? user.getDomains() : new ArrayList<>();
+    }
+
+    public void addDomain(String username, Domain domain) {
+        userRepository.findUserByUsername(username).ifPresent(user -> {
+            user.getDomains().add(domain);
+            userRepository.save(user);
+        });
+    }
+
+    public void removeDomain(String username, String domain, String domainUsername) {
+        System.out.println(username);
+
+        userRepository.findUserByUsername(username).ifPresent(user -> {
+            user.getDomains().removeIf(d -> d.getDomainAddress().equals(domain) && d.getUsername().equals(domainUsername));
+            userRepository.save(user);
+        });
     }
 }

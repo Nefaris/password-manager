@@ -5,9 +5,7 @@ import com.nefaris.passwordmanager.demo.services.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import com.nefaris.passwordmanager.demo.models.RegisterFormData;
 import org.thymeleaf.util.StringUtils;
 
@@ -55,6 +53,13 @@ public class UserController {
     @PostMapping("/addDomain")
     public String addDomain(Authentication authentication, @ModelAttribute Domain domain) {
         userService.addDomain(authentication.getName(), domain);
+        return "redirect:/dashboard";
+    }
+
+    @PostMapping("/removeDomain")
+    public String removeDomain(Authentication authentication, @RequestParam String domain, @RequestParam String domainUsername) {
+        System.out.println(domain);
+        userService.removeDomain(authentication.getName(), domain, domainUsername);
         return "redirect:/dashboard";
     }
 }
