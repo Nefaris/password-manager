@@ -1,7 +1,7 @@
 package com.nefaris.passwordmanager.demo.controllers;
 
 import com.nefaris.passwordmanager.demo.models.Domain;
-import com.nefaris.passwordmanager.demo.services.UserService;
+import com.nefaris.passwordmanager.demo.services.DomainService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +11,10 @@ import org.thymeleaf.util.StringUtils;
 @Controller
 public class DashboardController {
 
-    private final UserService userService;
+    private final DomainService domainService;
 
-    public DashboardController(UserService userService) {
-        this.userService = userService;
+    public DashboardController(DomainService domainService) {
+        this.domainService = domainService;
     }
 
     @GetMapping("/dashboard")
@@ -24,7 +24,7 @@ public class DashboardController {
 
         model.addAttribute("domain", domain);
         model.addAttribute("displayUsername", StringUtils.capitalize(username));
-        model.addAttribute("domains", userService.getDomains(username));
+        model.addAttribute("domains", domainService.getDomains(username));
 
         return "dashboard";
     }

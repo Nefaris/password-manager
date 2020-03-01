@@ -1,6 +1,5 @@
 package com.nefaris.passwordmanager.demo.services;
 
-import com.nefaris.passwordmanager.demo.models.Domain;
 import com.nefaris.passwordmanager.demo.models.RegisterFormData;
 import com.nefaris.passwordmanager.demo.models.User;
 import com.nefaris.passwordmanager.demo.repositories.UserRepository;
@@ -9,9 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -22,14 +18,6 @@ public class UserService {
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-    }
-
-    public boolean userExistsByUsername(String username) {
-        return userRepository.findUserByUsername(username).isPresent();
-    }
-
-    public boolean userExistsByEmail(String email) {
-        return userRepository.findUserByEmail(email).isPresent();
     }
 
     public boolean registerUser(RegisterFormData registerFormData) {
@@ -50,24 +38,11 @@ public class UserService {
         return !(auth instanceof AnonymousAuthenticationToken);
     }
 
-    public List<Domain> getDomains(String username) {
-        User user = userRepository.findUserByUsername(username).orElse(null);
-        return user != null ? user.getDomains() : new ArrayList<>();
+    public boolean userExistsByUsername(String username) {
+        return userRepository.findUserByUsername(username).isPresent();
     }
 
-    public void addDomain(String username, Domain domain) {
-        userRepository.findUserByUsername(username).ifPresent(user -> {
-            user.getDomains().add(domain);
-            userRepository.save(user);
-        });
-    }
-
-    public void removeDomain(String username, String domain, String domainUsername) {
-        System.out.println(username);
-
-        userRepository.findUserByUsername(username).ifPresent(user -> {
-            user.getDomains().removeIf(d -> d.getDomainAddress().equals(domain) && d.getUsername().equals(domainUsername));
-            userRepository.save(user);
-        });
+    public boolean userExistsByEmail(String email) {
+        return userRepository.findUserByEmail(email).isPresent();
     }
 }
